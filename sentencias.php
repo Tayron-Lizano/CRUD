@@ -41,6 +41,14 @@ class Consulta extends Conexion {
 
 	return $row;
    }
+
+   public function makeInsert ($nombre, $apellido, $edad, $genero, $departamento, $sueldo){
+	$sql = "INSERT INTO empleados (nombre, apellido, edad, genero, departamento, sueldo) values(:NOM, :APE, :EDAD, :GEN, :DEP, :SUE)";
+	$result = $this->link->prepare($sql);
+	$result->execute(array(":NOM"=>$nombre, ":APE"=>$apellido, ":EDAD"=>$edad, ":GEN"=>$genero, ":DEP"=>$departamento, ":SUE"=>$sueldo));
+   
+   }
+
 }
 
 ?>

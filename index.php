@@ -1,6 +1,6 @@
 <?php
 
-require("select.php");
+require("sentencias.php");
 
 
 $instance = new Consulta();
@@ -9,7 +9,7 @@ $result = $instance->getEmpleados();
 
 
 if(isset($_GET['id'])){
-   $id = $_GET['id'];
+   $id = htmlentities(addslashes($_GET['id']));
    $row = $instance->selectUpdate($id);
 
 }
@@ -59,6 +59,38 @@ if(isset($_GET['id'])){
 <?php
 endforeach;
 ?>
+
+
+<form action="insert.php" method="post">
+   <div class="groupform">
+      <label for="nombre">Nombre</label>
+      <input type="text" name="nombre" id="name" placeholder="Enter your name">
+   </div>
+   <div class="groupform">
+      <label for="apellido">Appellido</label>
+      <input type="Text" name="apellido" id="apellido" placeholder="Enter your last name">
+   </div>
+   <div class="groupform">
+      <label for="edad">Edad</label>
+      <input type="number" name="edad" id="edad" placeholder="Enter you age">
+   </div>
+   <div class="groupform">
+      <label for="genero">Género</label>
+      <input type="text" name="genero" id="genero" placeholder=" F (FEMALE) - M (MALE)">
+   </div>
+   <div class="groupform">
+      <label for="departamento">Departamento</label>
+      <input type="text" name="departamento" id="departamento" >
+   </div>
+   <div class="groupform">
+      <label for="sueldo">Sueldo:</label>
+      <input type="number" name="sueldo" id="sueldo">
+   </div>
+   <button type="submit">Registrar</button>
+</form>
+
+
+
 <table>
 
 <tr>

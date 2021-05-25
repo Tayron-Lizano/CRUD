@@ -1,8 +1,8 @@
 <?php
 
-require("select.php");
+require("sentencias.php");
 
-$id= $_GET['id'];
+$id= htmlspecialchars(addslashes($_GET['id']));
 
 $instance = new Consulta();
 
