@@ -5,6 +5,16 @@
    padding: 0;
 }
 
+h1{
+   background-color: darkcyan;
+   font-size: 3rem;
+   display: flex;
+   align-self: center;
+   width: 71%;
+   height: 5rem;
+   margin: auto;
+}
+
 form {
    display: flex;
    width: 70%;
