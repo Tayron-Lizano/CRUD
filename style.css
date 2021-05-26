@@ -1,0 +1,72 @@
+*{
+   font-size: 12px;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+form {
+   display: flex;
+   width: 70%;
+   margin:auto;
+   justify-content: space-around;
+}
+
+form .groupform {
+   padding: 1rem;
+}
+
+form button{
+   font-size: 1.2rem;
+   height: 2.8rem;
+   align-self: center;
+   background: darkcyan;
+   border-color: darkcyan;
+   border-radius:3px;
+   color: white;
+   padding: 0.5rem 1rem;
+}
+
+input {
+   width: 150px;
+
+}
+
+#edad, #genero, #sueldo{
+   width: 100px;
+
+}
+
+table{
+   width:70%;
+   text-align:center;
+   margin: auto;
+}
+
+table a{
+   font-size: 1.1rem;
+   text-decoration: none;
+   color:white;
+   border-radius: 3px;
+   padding: 0.4rem 1rem;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table .borrar{
+   background: red;
+}
+
+table .editar{
+   background: orange;
+}
+
+
+tr:nth-child(even){
+   background: lightgrey;
+}
+
+th ,td{
+   border:1px solid green;
+   height:3rem;
+}
+
