@@ -24,8 +24,10 @@ if(isset($_GET['id'])){
 </head>
 <body>
 
+<div class="overlay">
 
-
+    <div class="popup">
+<h2>Update form</h2>
 <?php foreach($row as $e):  ?>
 
 <form action="update.php" method="post">
@@ -65,6 +67,9 @@ if(isset($_GET['id'])){
 <?php
 endforeach;
 ?>
+
+    </div>
+</div>
 
 
 <h1>CRUD Databases</h1>
