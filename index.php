@@ -11,6 +11,13 @@ $result = $instance->getEmpleados();
 if(isset($_GET['id'])){
    $id = htmlentities(addslashes($_GET['id']));
    $row = $instance->selectUpdate($id);
+?>
+
+<script>
+   var mostrar = true;
+</script>
+
+<?php
 
 }
 
@@ -21,18 +28,19 @@ if(isset($_GET['id'])){
    <meta charset="UTF-8">
    <title></title>
    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-<div class="overlay">
+<div class="overlay" id="overlay">
 
     <div class="popup">
-<h2>Update form</h2>
+<h2 class="title-update">Update form</h2>
 <?php foreach($row as $e):  ?>
 
-<form action="update.php" method="post">
+<form class="updateForm"  action="update.php" method="post">
    <div class="groupform">
-      <label for="">ID:</label>  <br>
+      <label for="">ID:</label>  <br> 
       <input type="number" name="id" id="id"  value="<?php echo $e['id'] ?>" >
    </div>
    <div class="groupform">
@@ -40,7 +48,7 @@ if(isset($_GET['id'])){
       <input type="text" name="nombre" id="nombre" value="<?php echo  $e['nombre']  ?>"   >
    </div>
    <div class="groupform">
-      <label for="">Apellido</label> <br>
+      <label for="">Apellido</label><br>
       <input type="text" name="apellido" id="apellido" value="<?php echo $e['apellido']  ?>"  >
    </div>
    <div class="groupform">
@@ -60,7 +68,7 @@ if(isset($_GET['id'])){
       <input type="number" name="sueldo" id="sueldo" value="<?php echo $e['sueldo']  ?>"  >
    </div>  
    <div class="groupform">
-      <button typpe="submit">Editar</button>
+      <button id="btn-update" type="submit">Actualizar</button>
    </div>
 </form>
 
@@ -71,8 +79,9 @@ endforeach;
     </div>
 </div>
 
+<main>
 
-<h1>CRUD Databases</h1>
+<h1>CRUD PHP</h1>
 <form action="insert.php" method="post">
    <div class="groupform">
       <label for="nombre">Nombre</label>
@@ -98,19 +107,17 @@ endforeach;
       <label for="sueldo">Sueldo:</label>
       <input type="number" name="sueldo" id="sueldo">
    </div>
-   <button type="submit">Registrar</button>
+   <button id="btn-nuevo" type="submit">Nuevo</button>
 </form>
-
 
 
 <table>
 
 <tr>
-   <th>	Nombre</th>  <th>pellido </th>  <th>Edad</th>  <th>Genero</th> <th>Departamento</th>  <th>Sueldo</th> <th colspan=2>Opciones</th>
+   <th>	Nombre</th>  <th>Apellido </th>  <th>Edad</th>  <th>Genero</th> <th>Departamento</th>  <th>Sueldo</th> <th colspan=2>Opciones</th>
 </tr>
 
 <?php
-
 foreach($result as $e):?>
     <!--echo $e['id']."". $e['nombre']. "".$e['apellido']."" .$e['edad']. "". $e['genero']. "". $e['departamento']. "" . $e['sueldo'];-->
     <tr>
@@ -120,8 +127,8 @@ foreach($result as $e):?>
        <td><?php echo $e['genero'] ?></td>
        <td><?php echo $e['departamento'] ?></td>
        <td><?php echo $e['sueldo'] ?></td>
-       <td><a class="borrar" href="delete.php?id=<?php echo $e['id']?>">Borrar</a></td>
-       <td><a class="editar" href="index.php?id=<?php echo $e['id']?>">Editar</a></td>
+       <td><a class="editar" id="editar"  href="index.php?id=<?php echo $e['id']?>">Editar</a></td>
+       <td><a class="borrar"  href="delete.php?id=<?php echo $e['id']?>">Borrar</a></td>
 
     </tr>
 <br>
@@ -131,6 +138,18 @@ endforeach;
 ?>
 
 </table>
+
+
+
+</main>
+
+<script>
+
+if(mostrar){
+   document.getElementById("overlay").style.display="block";
+}
+
+</script>
 
 </body>
 </html>
